@@ -1,0 +1,43 @@
+@font-face {
+  font-family: SFProText-Regular;
+  src: url(./Fonts/SFProText-Regular.ttf);
+}
+
+@font-face {
+  font-family: SFProText-Semibold;
+  src: url(./Fonts/SFProText-Semibold.ttf);
+}
+
+body{
+  font-family: SFProText-Regular;
+  font-size: 18px;
+}
+
+.app {
+  width: 640px;
+  height: 800px;
+  background-color: #F7F7F7;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  &__main-heading{
+    font-family: SFProText-Semibold;
+    position: absolute;
+    margin: 16px;
+    top: -60px;
+    font-size: 36px;
+    color: #F7F7F7;
+    line-height: 41px;
+  }
+
+  &__heading{
+    font-family: SFProText-Semibold;
+    margin: 32px 16px;
+    font-size: 36px;
+    color: #11A9EC;
+    line-height: 41px;
+
+  }
+}
