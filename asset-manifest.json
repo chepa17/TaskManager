@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/TaskManager/static/css/main.a47a5f17.chunk.css",
+    "main.css": "/TaskManager/static/css/main.bf662327.chunk.css",
     "main.js": "/TaskManager/static/js/main.34a45402.chunk.js",
     "main.js.map": "/TaskManager/static/js/main.34a45402.chunk.js.map",
     "runtime-main.js": "/TaskManager/static/js/runtime-main.68e577ed.js",
@@ -8,16 +8,16 @@
     "static/js/2.a2fc248d.chunk.js": "/TaskManager/static/js/2.a2fc248d.chunk.js",
     "static/js/2.a2fc248d.chunk.js.map": "/TaskManager/static/js/2.a2fc248d.chunk.js.map",
     "index.html": "/TaskManager/index.html",
-    "precache-manifest.04b9ec9771affa5a15ac3375a0f23116.js": "/TaskManager/precache-manifest.04b9ec9771affa5a15ac3375a0f23116.js",
+    "precache-manifest.1950d33c5897cc91040e3797bc3814fd.js": "/TaskManager/precache-manifest.1950d33c5897cc91040e3797bc3814fd.js",
     "service-worker.js": "/TaskManager/service-worker.js",
-    "static/css/main.a47a5f17.chunk.css.map": "/TaskManager/static/css/main.a47a5f17.chunk.css.map",
+    "static/css/main.bf662327.chunk.css.map": "/TaskManager/static/css/main.bf662327.chunk.css.map",
     "static/media/Input.css": "/TaskManager/static/media/SFProText-Heavy.6c498791.ttf",
     "static/media/App.css": "/TaskManager/static/media/SFProText-Semibold.6abf2b14.ttf"
   },
   "entrypoints": [
     "static/js/runtime-main.68e577ed.js",
     "static/js/2.a2fc248d.chunk.js",
-    "static/css/main.a47a5f17.chunk.css",
+    "static/css/main.bf662327.chunk.css",
     "static/js/main.34a45402.chunk.js"
   ]
 }
