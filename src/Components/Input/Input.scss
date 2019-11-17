@@ -97,6 +97,11 @@ input:focus {
     font-size: 18px;
     line-height: 21px;
     margin-bottom: 19px;
+
+    &:active {
+      outline: none;
+      color: #0EADEB;
+    }
   }
 
   &__active {
