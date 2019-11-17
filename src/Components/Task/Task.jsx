@@ -39,7 +39,9 @@ class Task extends Component {
     return (
       <div className="tasklist__task task">
         <div className="task__body">
-          <div className={`roundedCheckbox${task.isCompleted ? ' checked' : ''}`}>
+          <div 
+            onClick={this.onComplete}
+            className={`roundedCheckbox${task.isCompleted ? ' checked' : ''}`}>
             <input 
               type="checkbox"
               name="isComplited"
