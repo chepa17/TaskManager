@@ -89,6 +89,10 @@ input:focus {
   line-height: 21px;
   margin-bottom: 19px;
 }
+.input-wrapper__button:active {
+  outline: none;
+  color: #0EADEB;
+}
 .input-wrapper__active {
   color: #0EADEB;
 }

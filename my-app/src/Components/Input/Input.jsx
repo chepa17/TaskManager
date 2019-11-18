@@ -8,7 +8,7 @@ class Input extends Component {
       inputValue: '',
       isFocused: false
     }
-
+    this.inputRef = React.createRef();
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.onFocus = this.onFocus.bind(this);
@@ -27,6 +27,7 @@ class Input extends Component {
     this.setState({
       inputValue: '',
     });
+    this.inputRef.current.focus();
   }
 
   onFocus() {
@@ -44,6 +45,7 @@ class Input extends Component {
           className="input-wrapper__form"
           onSubmit={this.onSubmit}>
           <input 
+            ref={this.inputRef}
             type="text"
             placeholder="Add new task"
             className="input-wrapper__input"
@@ -53,7 +55,7 @@ class Input extends Component {
             onBlur={this.onBlur}
           />
         </form>
-        {this.state.isFocused && <button 
+        {(this.state.isFocused || this.state.inputValue !== '') && <button 
           className={`input-wrapper__button button
           ${this.state.isFocused && this.state.inputValue !== '' ? 'input-wrapper__active' : ''}
           ${this.state.isFocused ? ' input-wrapper__focused' : ''}

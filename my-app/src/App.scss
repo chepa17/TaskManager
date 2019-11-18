@@ -15,12 +15,12 @@ body{
 
 .app {
   width: 640px;
-  height: 800px;
+  min-height: 800px;
   background-color: #F7F7F7;
   position: absolute;
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  top: 112px;
+  transform: translateX(-50%);
 
   &__main-heading{
     font-family: SFProText-Semibold;
