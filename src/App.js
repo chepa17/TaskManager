@@ -38,8 +38,10 @@ class App extends Component {
     this.inCompleteCount = inCompletedTasks.length;
   }
 
-  componentDidUpdate() {
-    updateStorage(this.state.tasks, this.state.taskId);
+  componentDidUpdate(_, prevState) {
+    if (JSON.stringify(prevState.tasks) !== JSON.stringify(this.state.tasks)) {
+      updateStorage(this.state.tasks, this.state.taskId);
+    }    
   }
 
   onComplete(id) {
@@ -65,10 +67,9 @@ class App extends Component {
 
   onRemove(id) {
     this.setState(prevState => {
-      const index = prevState.tasks.findIndex(item => item.id === id);
-      return {
-        tasks: [...prevState.tasks.slice(0, index), ...prevState.tasks.splice(index + 1)],
-      }
+      return ({
+        tasks: prevState.tasks.filter(item => item.id !== id),
+      })
     })
   }
 
@@ -82,29 +83,32 @@ class App extends Component {
           isCompleted: false,
           completedDate: null
         });
+        this.inCompleteCount++;
         return ({
           tasks: newTasks,
           taskId: prevState.taskId + 1,
         })
-      });
-      this.inCompleteCount++; 
+      });      
     }
   }
 
   render() {
+    const { tasks } = this.state; 
+
     return (
       <div className="app">
         <h1 className="app__main-heading">Task Manager</h1>
         <h2 className="app__heading">Work</h2>
         <Input onAddTask={this.onAddTask}/>
-        <div>{this.state.tasks.map(task => 
-          <Task 
-            key={task.id} 
-            task={task} 
-            onComplete={this.onComplete} 
-            onRemove={this.onRemove} 
-          />
-          )}
+        <div>
+          {tasks.map(task => (
+            <Task 
+              key={task.id} 
+              task={task} 
+              onComplete={this.onComplete} 
+              onRemove={this.onRemove} 
+            />
+          ))}
         </div>
       </div>
     )

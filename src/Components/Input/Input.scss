@@ -28,21 +28,22 @@ input:focus {
   flex-wrap: nowrap;
   justify-content: space-between;
   margin: 0 16px;
-  border-bottom: 1px solid #E6E6E6;
 
   &__form {
     width: 100%;
     position: relative;
-    margin-left: 29px;
+    margin-left: 32px;
 
     &::before {
       content: "";
       display: block;
+      box-sizing: border-box;
       position: absolute;
-      left: -28px;
+      left: -31px;
       top: 11px;
       width: 17px;
       height: 3px;
+      border-radius: 3px;
       background-color: #11A9EC;
     }
 
@@ -50,10 +51,11 @@ input:focus {
       content: "";
       display: block;
       position: absolute;
-      left: -21px;
+      left: -24px;
       top: 4px;
       width: 3px;
       height: 17px;
+      border-radius: 3px;
       background-color: #11A9EC;
     }
   }
@@ -62,10 +64,9 @@ input:focus {
     font-size: 18px;
     line-height: 21px;
     font-family: SFProText-Regular;
-    color: #666666;
+    color: #666;
     letter-spacing: 0.2px;
     border: none;
-    margin-bottom: 19px;
     width: 100%;
 
     &::-webkit-input-placeholder { /* Edge */
@@ -84,7 +85,7 @@ input:focus {
     }
 
     &:focus {
-      outline:none;
+      outline: none;
     }
   }
 
@@ -96,7 +97,6 @@ input:focus {
     font-family: SFProText-Heavy;
     font-size: 18px;
     line-height: 21px;
-    margin-bottom: 19px;
     color: #E6E6E6;
 
     &:active {
@@ -109,10 +109,21 @@ input:focus {
     color: #0EADEB;
     cursor: pointer;
   }
+}
 
+.underline{
+  margin: 0 16px;
 
-  &:focus-within, 
-  &:focus {
-    border-bottom: 2px solid #11A9EC;
+  &__unfocused{
+    margin-top: 20px;
+    height: 1px;
+    background-color: #E6E6E6
+  }
+
+  &__focused{
+    margin-top: 19px;
+    height: 2px;
+    border-radius: 1px;
+    background-color: #11A9EC;
   }
 }
