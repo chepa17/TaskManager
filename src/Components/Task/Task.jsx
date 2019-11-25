@@ -7,12 +7,12 @@ class Task extends Component {
   timeoutId = 0;
 
   componentDidUpdate(prevProps) {
-    if (!!prevProps.task.completedAt === !this.props.task.completedAt) {
+    if (Boolean(prevProps.task.completedAt) === !this.props.task.completedAt) {
       if (!this.props.task.completedAt) {
         clearTimeout(this.timeoutId);
       }
       
-      if (!!this.props.task.completedAt) {
+      if (Boolean(this.props.task.completedAt)) {
         this.timeoutId = setTimeout(() => {
           this.props.onRemove(this.id)
         }, 60000);
@@ -28,7 +28,7 @@ class Task extends Component {
         <div className="task__body">
           <div 
             onClick={this.onComplete}
-            className={`roundedCheckbox${!!task.completedAt ? ' checked' : ''}`}>
+            className={`roundedCheckbox${Boolean(task.completedAt) ? ' checked' : ''}`}>
             <input 
               type="checkbox"
               name="isComplited"
@@ -39,10 +39,10 @@ class Task extends Component {
             />
             <label htmlFor={`roundedCheckbox${task.id}`}></label>
           </div>
-          <p className={`task__title${!!task.completedAt ? ' task__completed' : ''}`}>{task.title}</p>
+          <p className={`task__title${Boolean(task.completedAt) ? ' task__completed' : ''}`}>{task.title}</p>
         </div>
         {
-          !!task.completedAt && 
+          Boolean(task.completedAt) && 
             (<p className="task__date">
               {task.completedAt.format('MMM D, YYYY')}
             </p>)
