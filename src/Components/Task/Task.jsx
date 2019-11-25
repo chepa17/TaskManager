@@ -3,21 +3,16 @@ import PropTypes from 'prop-types';
 import './Task.css'
 
 class Task extends Component {
-  constructor(props) {
-    super(props);
-
-    this.onComplete = this.onComplete.bind(this);
-    this.timeoutId = 0;
-    this.id = this.props.task.id;
-  }
+  id = this.props.task.id;
+  timeoutId = 0;
 
   componentDidUpdate(prevProps) {
-    if (prevProps.task.isCompleted !== this.props.task.isCompleted) {
-      if (!this.props.task.isCompleted) {
+    if (!!prevProps.task.completedAt === !this.props.task.completedAt) {
+      if (!this.props.task.completedAt) {
         clearTimeout(this.timeoutId);
       }
       
-      if (this.props.task.isCompleted) {
+      if (!!this.props.task.completedAt) {
         this.timeoutId = setTimeout(() => {
           this.props.onRemove(this.id)
         }, 60000);
@@ -25,39 +20,31 @@ class Task extends Component {
     }
   }
 
-  onComplete() {
-    this.props.onComplete(this.id);
-  }
-
   render() {
     const { task } = this.props;
-    const date = new Date(task.completedDate);
-    const monthNames = [
-      "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-    ];
+
     return (
       <div className="tasklist__task task">
         <div className="task__body">
           <div 
             onClick={this.onComplete}
-            className={`roundedCheckbox${task.isCompleted ? ' checked' : ''}`}>
+            className={`roundedCheckbox${!!task.completedAt ? ' checked' : ''}`}>
             <input 
               type="checkbox"
               name="isComplited"
               className="task__checkbox roundedCheckbox"
               id={`roundedCheckbox${task.id}`}
               checked={task.isCompleted}
-              onChange={this.onComplete}
+              onChange={() => this.props.onToggle(this.id)}
             />
             <label htmlFor={`roundedCheckbox${task.id}`}></label>
           </div>
-          <p className={`task__title${task.isCompleted ? ' task__completed' : ''}`}>{task.title}</p>
+          <p className={`task__title${!!task.completedAt ? ' task__completed' : ''}`}>{task.title}</p>
         </div>
         {
-          task.isCompleted && 
+          !!task.completedAt && 
             (<p className="task__date">
-              {`${monthNames[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`}
+              {task.completedAt.format('MMM D, YYYY')}
             </p>)
         }       
       </div>
@@ -69,11 +56,9 @@ class Task extends Component {
 Task.propTypes = {
   task: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
-    isCompleted: PropTypes.bool.isRequired,
-    completedDate: PropTypes.number,
+    id: PropTypes.string.isRequired,
   }).isRequired,
-  onComplete: PropTypes.func.isRequired,
+  onToggle: PropTypes.func.isRequired,
   onRemove: PropTypes.func.isRequired,
 };
 

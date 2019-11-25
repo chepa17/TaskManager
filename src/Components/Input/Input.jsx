@@ -2,26 +2,20 @@ import React, { Component } from 'react';
 import './Input.css'
 
 class Input extends Component {
-  constructor({ props }) {
-    super(props);
-    this.state = {
-      inputValue: '',
-      isFocused: false
-    }
-    this.inputRef = React.createRef();
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-    this.onFocus = this.onFocus.bind(this);
-    this.onBlur = this.onBlur.bind(this);
+  state = {
+    inputValue: '',
+    isFocused: false
   }
 
-  onChange(event) {
+  inputRef = React.createRef();
+
+  onChange = event => {
     this.setState({
       inputValue: event.target.value,
     });
   }
 
-  onSubmit(event) {
+  onSubmit = event => {
     event.preventDefault();
     this.props.onAddTask(this.state.inputValue);
     this.setState({
@@ -30,11 +24,11 @@ class Input extends Component {
     this.inputRef.current.focus();
   }
 
-  onFocus() {
+  onFocus = () => {
     this.setState({isFocused: true});
   }
 
-  onBlur() {
+  onBlur = () => {
     this.setState({isFocused: false});
   }
 
